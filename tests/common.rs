@@ -22,6 +22,7 @@ pub async fn setup() -> (wgpu::Device, wgpu::Queue) {
             required_limits: wgpu::Limits::default(),
             memory_hints: wgpu::MemoryHints::Performance,
             trace: wgpu::Trace::Off,
+            ..Default::default()
         })
         .await
         .expect("Unable to find a suitable GPU adapter!")
