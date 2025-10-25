@@ -48,7 +48,7 @@ pub async fn create_png(
     // In an actual application, `device.poll(...)` should
     // be called in an event loop or on another thread.
     device
-        .poll(wgpu::PollType::Wait)
+        .poll(wgpu::PollType::wait_indefinitely())
         .expect("Failed to poll device");
 
     // If a file system is available, write the buffer as a PNG
@@ -130,7 +130,7 @@ fn get_texture_data(
     queue.submit(Some(command_buffer));
 
     device
-        .poll(wgpu::PollType::Wait)
+        .poll(wgpu::PollType::wait_indefinitely())
         .expect("Failed to poll device");
 
     output_buffer
